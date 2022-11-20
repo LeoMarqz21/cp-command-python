@@ -1,0 +1,4 @@
+
+class CpError(Exception):
+    pass
+    
