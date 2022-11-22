@@ -8,7 +8,12 @@ def copy_directory(src: str, dest: str):
     print('cp dir')
 
 def copy_file(src: str, dest: str):
-    print('cp file')
+    if dest.is_dir():
+        dest = dest / src.name
+    if dest.is_file():
+        raise CpError(f'Cannot override {dest}')
+    print(f'Copy: {src} -> {dest}')
+    
 
 def copy(src: Path, dest: Path):
     if src.is_file():
